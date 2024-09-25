@@ -30,7 +30,7 @@ class Order(Base):
     id = Column(Integer, primary_key=True, index=True)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     status = Column(Enum(OrderStatusEnum), default=OrderStatusEnum.in_progress)
-    
+
     order_items = relationship("OrderItem", back_populates="order")
 
 

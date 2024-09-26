@@ -36,7 +36,7 @@ To build and run the app using Docker, execute:\
 docker compose up -d
 ```
 
-### Step 4: Testing the API
+## How to Use
 
 Now that the server is running, you can test the available endpoints of your API. To do this, open Postman or navigate to [http://localhost:8000/docs](http://localhost:8000/docs) to view the automatic Swagger documentation.
 

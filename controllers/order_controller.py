@@ -37,7 +37,7 @@ def create_order(db: Session, order: schemas.OrderCreate) -> models.Order:
         db_order_items.append(db_order_item)
 
     # Create order
-    new_order = models.Order(order_items=db_order_item)
+    new_order = models.Order(order_items=[db_order_item])
 
     try:
         db.add(new_order)
@@ -58,7 +58,9 @@ def get_order(db: Session, order_id: int) -> models.Order:
     db_order = db.query(models.Order).filter(models.Order.id == order_id).first()
 
     if not db_order:
-        raise HTTPException(status_code=404, detail="Order not found")
+        raise HTTPException(
+            status_code=404, detail=f"Order with id {order_id} not found"
+        )
 
     return db_order
 
@@ -80,7 +82,9 @@ def update_order_status(
     db_order = db.query(models.Order).filter(models.Order.id == order_id).first()
 
     if not db_order:
-        raise HTTPException(status_code=404, detail="Order not found")
+        raise HTTPException(
+            status_code=404, detail=f"Order with id {order_id} not found"
+        )
 
     # Update order status
     db_order.status = status

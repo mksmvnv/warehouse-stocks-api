@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: warehouse-stocks-api
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - warehouse
+    restart: always
+
+  db:
+    image: postgres:16
+    container_name: warehouse-stocks-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "5433:5432"
+    networks:
+      - warehouse
+    restart: always
+
+volumes:
+  postgres_data:
+
+networks:
+  warehouse:

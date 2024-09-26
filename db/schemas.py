@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import List
 
 from datetime import datetime
@@ -23,8 +23,7 @@ class ProductUpdate(ProductBase):
 class Product(ProductBase):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict()
 
 
 # Schemas for Product
@@ -42,5 +41,4 @@ class Order(BaseModel):
     status: str
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict()

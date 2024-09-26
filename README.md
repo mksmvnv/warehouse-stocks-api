@@ -26,7 +26,6 @@ Before build containers, create a session on the server:\
 
 ```
 tmux new -s warehouse-stocks-api
-
 ```
 
 ### Step 3: Run the App with Docker

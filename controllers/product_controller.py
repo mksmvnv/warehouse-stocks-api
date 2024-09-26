@@ -9,8 +9,8 @@ from db import models, schemas
 def create_product(db: Session, product: schemas.ProductCreate) -> models.Product:
     # Validate product name
     if not product.name:
-        raise HTTPException(status_code=400, detail="Product name is connot be empty")
-    
+        raise HTTPException(status_code=400, detail="Product name cannot be empty")
+
     # Create new product
     new_product = models.Product(**product.model_dump())
 

@@ -10,15 +10,17 @@ This is an implementation of a test API for warehouse stock control and orders.
 
 Create a **.env** file in the root directory of your project and add the following environment variables:
 
-- `SQLALCHEMY_DATABASE_URL`=postgresql://db_user:db_password@db_host:db_port/db_name
-- `POSTGRES_USER`=db_user
-- `POSTGRES_PASSWORD`=db_password
-- `POSTGRES_DB`=db_name
+- `sqlalchemy_database_url`=postgresql://db_user:db_password@db_host:db_port/db_name
+- `postgres_user`=db_user
+- `postgres_password`=db_password
+- `postgress_db`=db_name
 
-- `SQLALCHEMY_DATABASE_URL_TEST`=postgresql://db_test_user:db_test_password@db_test_host:db_test_port/db_test_name
-- `POSTGRES_USER_TEST`=db_test_user
-- `POSTGRES_PASSWORD_TEST`=db_test_password
-- `POSTGRES_DB_TEST`=db_test_name
+- `sqlalchemy_database_url_test`=postgresql://db_test_user:db_test_password@db_test_host:db_test_port/db_test_name
+- `postgres_user_test`=db_test_user
+- `postgres_password_test`=db_test_password
+- `postgress_db_test`=db_test_name
+
+- `api_prefix`=secret_api_prefix
 
 ### Step 2: Create a Server Session
 
@@ -44,31 +46,31 @@ Now that the server is running, you can test the available endpoints of your API
 
 - *Create Product*:
 
-  `POST /products`
+  `POST /secret_prefix/products`
   
   Use this endpoint to add a new product to the system.
 
 - *Get List of Products*:
   
-  `GET /products`
+  `GET /secret_prefix/products`
   
   This endpoint returns a list of all products.
 
 - *Get Product Information by ID*:
   
-  `GET /products/{id}`
+  `GET /secret_prefix/products/{id}`
   
   Retrieve information about a specific product by replacing `{id}` with the product's identifier.
 
 - *Update Product Information*:
   
-  `PUT /products/{id}`
+  `PUT /secret_prefix/products/{id}`
   
   This endpoint allows you to update product information. Be sure to replace `{id}` with the desired identifier.
 
 - *Delete Product*:
   
-  `DELETE /products/{id}`
+  `DELETE /secret_prefix/products/{id}`
   
   Remove a product by replacing `{id}` with the identifier of the product to be deleted.
 
@@ -76,25 +78,25 @@ Now that the server is running, you can test the available endpoints of your API
 
 - *Create Order*:
   
-  `POST /orders`
+  `POST /secret_prefix/orders`
   
   Use this endpoint to create a new order.
 
 - *Get List of Orders*:
   
-  `GET /orders`
+  `GET /secret_prefix/orders`
   
   This endpoint returns a list of all orders.
 
 - *Get Order Information by ID*:
   
-  `GET /orders/{id}`
+  `GET /secret_prefix/orders/{id}`
   
   Retrieve information about a specific order by replacing `{id}` with the order's identifier.
 
 - *Update Order Status*:
   
-  `PATCH /orders/{id}/status`
+  `PATCH /secret_prefix/orders/{id}/status`
   
   Use this endpoint to update the status of an order by replacing `{id}` with the order's identifier.
 

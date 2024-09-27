@@ -1,7 +1,4 @@
-import os
 import pytest
-
-from dotenv import load_dotenv
 
 from fastapi.testclient import TestClient
 
@@ -13,10 +10,9 @@ from main import app
 from db.models import Base
 from db.connect import get_db
 
+from config import settings
 
-load_dotenv()
-
-SQLALCHEMY_DATABASE_URL_TEST = os.getenv("SQLALCHEMY_DATABASE_URL_TEST")
+SQLALCHEMY_DATABASE_URL_TEST = settings.sqlalchemy_database_url_test
 
 engine_test = create_engine(SQLALCHEMY_DATABASE_URL_TEST)
 SessionLocalTest = sessionmaker(autocommit=False, autoflush=False, bind=engine_test)
